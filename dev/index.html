@@ -1,0 +1,503 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>
+
+    </title>
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <script src="./js/app.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.js"></script>
+
+
+</head>
+
+<body>
+    <div class="cw-page-wrapper cw-theme-dark">
+        <header class="cw-header-wrapper">
+            <div class="cw-header-container cw-header-menu">
+                <button class="hamburger hamburger--slider" type="button">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
+            </div>
+            <div class="cw-header-container cw-header-brand">
+                <img src="./img/cw-logo.png" />
+            </div>
+            <div class="cw-header-container cw-header-deposit">
+                <div class="cw-header-deposit-large">
+                    <a class="button is-rounded cw-btn cw-btn-primary cw-btn-action">Deposit BTC</a>
+                    <a class="button is-rounded cw-btn cw-btn-primary cw-btn-action">Deposit ETH</a>
+                </div>
+                <!--
+        <div class="cw-header-deposit-small">
+            <a class="button cw-btn cw-btn-primary cw-btn-action cw-btn-circle cw-btn-icon">
+                <i class="fab fa-bitcoin"></i>
+            </a>
+            <a class="button cw-btn cw-btn-primary cw-btn-action cw-btn-circle cw-btn-icon">
+                <i class="fab fa-ethereum"></i>
+            </a>
+
+        </div>
+        -->
+            </div>
+            <div class="cw-header-container cw-header-percent">
+                <a class="button cw-btn cw-btn-outline cw-btn-outline-secondary cw-btn-circle cw-t-brand2 cw-js-percent">%</a>
+                <div class="cw-header-percent-content cw-hide">Long text about how many percent</div>
+            </div>
+            <div class="cw-header-container cw-user-info">
+                <span class="cw-user-pic">
+                    <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/bootstrap4/assets/img/user.jpg"
+                        alt="User picture">
+                </span>
+                <span class="cw-user-name">Brittany Perez</span>
+            </div>
+            <div class="cw-header-container cw-header-logout">
+                <label class="cw-header-toggle-label">
+                    <div id="cw-id-toggle-theme-dark" class="cw-header-toggle-text cw-t-bold cw-t-brand2">dark</div>
+                    <div class="cw-header-toggle">
+                        <input class="cw-header-toggle-state" type="checkbox" name="check" value="check" />
+                        <div class="cw-header-toggle-inner">
+                            <div class="cw-header-toggle-indicator"></div>
+                        </div>
+                        <div class="cw-header-toggle-active"></div>
+                    </div>
+                    <div id="cw-id-toggle-theme-light" class="cw-header-toggle-text">light</div>
+                </label>
+
+                <a href="#" title="Log out">
+                    <span class="icon"><i class="fas fa-power-off"></i></span>
+                </a>
+            </div>
+        </header>
+
+        <script>
+            $('.hamburger').on('click', function (e) {
+                $('.hamburger').toggleClass('is-active');
+                $('.cw-sidebar-left').toggleClass('is-hidden-touch', 200, 'easeInOutSine');
+                $('nav').toggleClass('is-hidden-touch', 200, 'easeInOutSine');
+            });
+
+            $('.cw-js-percent').on('click', function () {
+                $('.cw-header-percent-content').toggleClass('cw-hide');
+            });
+
+            $('.cw-header-toggle-state').on('click', function () {
+                if ($(this).prop('checked') === true) {
+                    $(this).parents()
+                        .find('.cw-theme-dark')
+                        .removeClass('cw-theme-dark')
+                        .addClass('cw-theme-light');
+                    $('#cw-id-toggle-theme-dark').removeClass('cw-t-bold cw-t-brand2');
+                    $('#cw-id-toggle-theme-light').addClass('cw-t-bold cw-t-brand2');
+                } else {
+                    $(this).parents()
+                        .find('.cw-theme-light')
+                        .removeClass('cw-theme-light')
+                        .addClass('cw-theme-dark');
+                    $('#cw-id-toggle-theme-light').removeClass('cw-t-bold cw-t-brand2');
+                    $('#cw-id-toggle-theme-dark').addClass('cw-t-bold cw-t-brand2');
+                }
+            });
+        </script>
+
+        <div class="columns">
+            <div class="column is-2-desktop is-hidden-touch cw-sidebar-wrapper cw-sidebar-left cw-pad-0">
+                <nav class="nav is-hidden-touch">
+                    <div class="cw-sidebar-content">
+                        <div class="cw-sidebar-menu">
+                            <ul>
+                                <li class="cw-sidebar-dropdown">
+                                    <a href="#">My Account</a>
+                                    <div class="cw-sidebar-submenu">
+                                        <div class="cw-user-info">
+                                            <span class="cw-user-pic">
+                                                <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/bootstrap4/assets/img/user.jpg"
+                                                    alt="User picture">
+                                            </span>
+                                            <span class="cw-user-name">Brittany Perez</span>
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Profile</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Portfolio</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Settings</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="cw-sidebar-dropdown">
+                                    <a href="#">Dashboard</a>
+                                    <div class="cw-sidebar-submenu">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Profile</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Portfolio</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Settings</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li class="cw-sidebar-dropdown">
+                                    <a href="#">Transaction</a>
+                                    <div class="cw-sidebar-submenu">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Profile</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Portfolio</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Settings</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="cw-sidebar-dropdown">
+                                    <a href="#">Cresow Sale Stats</a>
+                                    <div class="cw-sidebar-submenu">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Profile</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Portfolio</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Settings</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="cw-sidebar-dropdown">
+                                    <a href="#">Bonus Structure</a>
+                                    <div class="cw-sidebar-submenu">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Profile</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Portfolio</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Settings</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a href="#">Terms and Conditions</a>
+                                </li>
+                                <li>
+                                    <a href="#">Privacy Policy</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- cw-sidebar-menu  -->
+                    </div>
+                    <!-- cw-sidebar-content  -->
+                    <div class="cw-sidebar-footer">
+                        <div>
+                            <p class="is-size-7">Wallet balance:</p>
+                            <p class="has-text-weight-bold">$101</p>
+                        </div>
+                        <div class="has-text-right">
+                            <a href="#" class="button is-rounded cw-btn cw-btn-primary cw-btn-action is-size-7">Add
+                                Funds</a>
+                        </div>
+                    </div>
+                </nav>
+
+
+                <script>
+                    $('.cw-sidebar-dropdown > a').click(function () {
+                        $('.cw-sidebar-submenu').slideUp(175);
+                        if ($(this).parent().hasClass('active')) {
+                            $('.cw-sidebar-dropdown').removeClass('active');
+                            $(this).parent().removeClass('active');
+                        } else {
+                            $('.cw-sidebar-dropdown').removeClass('active');
+                            $(this).next('.cw-sidebar-submenu').slideDown(175);
+                            $(this).parent().addClass('active');
+                        }
+                    });
+                </script>
+            </div>
+            <div class="column is-10-desktop cw-main-content">
+
+                <div class="cw-d-block">
+                    <div class="cw-d-inline cw-mar-b-10 cw-mar-r-30">
+                        <h1 class="title is-3">Dashboard</h1>
+                        <p class="subtitle is-6">
+                            Welcome to Cresow Platform
+                        </p>
+                    </div>
+                    <div class="cw-d-inline cw-info-ticker-wrapper">
+
+                        <div class="cw-card cw-card-small cw-d-inline cw-info-ticker">
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image cw-img-med">
+                                        <img src="./img/icons/cw-icons-btc.png" alt="My BTC Deposit">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-7 is-spaced cw-mar-b-5 cw-mar-t-5">My BTC Deposit</p>
+                                    <p class="subtitle is-6 has-text-weight-bold cw-t-brand2">@johnsmith</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cw-card cw-card-small cw-d-inline cw-info-ticker">
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image cw-img-med">
+                                        <img src="./img/icons/cw-icons-coin.png" alt="My Cresow Coins">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-7 is-spaced cw-mar-b-5 cw-mar-t-5">My Cresow Coins</p>
+                                    <p class="subtitle is-6 has-text-weight-bold cw-t-brand2">@johnsmith</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cw-card cw-card-small cw-d-inline cw-info-ticker">
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image cw-img-med">
+                                        <img src="./img/icons/cw-icons-people.png" alt="Registered ICO Participants">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-7 is-spaced cw-mar-b-5 cw-mar-t-5">Registered</p>
+                                    <p class="subtitle is-6 has-text-weight-bold cw-t-brand2">@johnsmith</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cw-card cw-card-small cw-d-inline cw-info-ticker">
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image cw-img-med">
+                                        <img src="./img/icons/cw-icons-btc.png" alt="BTC Raised in Cresow ICO">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-7 is-spaced cw-mar-b-5 cw-mar-t-5">BTC Raised</p>
+                                    <p class="subtitle is-6 has-text-weight-bold cw-t-brand2">@johnsmith</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="cw-d-block cw-info-static-wrapper">
+
+                        <div class="cw-card cw-card-large cw-d-inline cw-info-static ">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-6 is-spaced cw-mar-b-5 cw-mar-t-5 cw-mar-r-10">Receive FREE
+                                        CresowPay</p>
+                                </div>
+                                <div class="media-right">
+                                    <figure class="image cw-img-med">
+                                        <img src="./img/icons/cw-icons-receive.png" alt="Receive FREE CresowPay">
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="cw-card-desc-wrapper">
+                                <p class="cw-card-desc">
+                                    Free Cresow airdrop
+                                </p>
+
+                                <a class="cw-card-link" href="#">Yes, I want</a>
+
+                            </div>
+                        </div>
+
+                        <div class="cw-card cw-card-large cw-d-inline cw-info-static ">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-6 is-spaced cw-mar-b-5 cw-mar-t-5 cw-mar-r-10">Purchase with
+                                        Bitcoin</p>
+                                </div>
+                                <div class="media-right">
+                                    <figure class="image cw-img-med">
+                                        <img src="./img/icons/cw-icons-buy.png" alt="Purchase with Bitcoin">
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="cw-card-desc-wrapper">
+                                <p class="cw-card-desc">
+                                    Purchase CresowPay with Bitcoin
+                                </p>
+
+                                <a class="cw-card-link" href="#">Download</a>
+
+                            </div>
+                        </div>
+
+                        <div class="cw-card cw-card-large cw-d-inline cw-info-static ">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-6 is-spaced cw-mar-b-5 cw-mar-t-5 cw-mar-r-10">About CresowPay</p>
+                                </div>
+                                <div class="media-right">
+                                    <figure class="image cw-img-med">
+                                        <img src="./img/icons/cw-icons-abt.png" alt="About CresowPay">
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="cw-card-desc-wrapper">
+                                <p class="cw-card-desc">
+                                    Learn more about CresowPay and the Cresow project
+                                </p>
+
+                                <a class="cw-card-link" href="#">Read the White Paper</a>
+
+                            </div>
+                        </div>
+
+                        <div class="cw-card cw-card-large cw-d-inline cw-info-static cw-card-special">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-6 is-spaced cw-mar-b-5 cw-mar-t-5 cw-mar-r-10">50% Bonus Expiry
+                                        Information</p>
+                                </div>
+                                <div class="media-right">
+                                    <figure class="image cw-img-med">
+                                        <img src="./img/icons/cw-icons-bonus.png" alt="50% Bonus Expiry Information">
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="cw-card-desc-wrapper">
+                                <p class="cw-card-desc">
+
+                                </p>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="cw-d-inline cw-info-sales-wrapper">
+
+                        <div class="cw-card cw-card-medium cw-d-inline cw-info-stats">
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image cw-img-large">
+                                        <img src="./img/icons/cw-icons-users.png" alt="Cresow Sale Participants">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-7 is-spaced cw-mar-b-5 cw-mar-t-5">Cresow Sale Participants</p>
+                                    <p class="is-6 has-text-weight-bold cw-t-brand2">@johnsmith</p>
+                                    <p class="cw-card-desc">Participants</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cw-card cw-card-medium cw-d-inline cw-info-stats">
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image cw-img-large">
+                                        <img src="./img/icons/cw-icons-sold.png" alt="Total CresowPay Sold">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-7 is-spaced cw-mar-b-5 cw-mar-t-5">Total CresowPay Sold</p>
+                                    <p class="is-6 has-text-weight-bold cw-t-brand2">@johnsmith</p>
+                                    <p class="cw-card-desc">CresowPay</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cw-card cw-card-medium cw-d-inline cw-info-stats">
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image cw-img-large">
+                                        <img src="./img/icons/cw-icons-raised.png" alt="Total BTC Raised">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-7 is-spaced cw-mar-b-5 cw-mar-t-5">Total BTC Raised</p>
+                                    <p class="is-6 has-text-weight-bold cw-t-brand2">@johnsmith</p>
+                                    <p class="cw-card-desc">BTC</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

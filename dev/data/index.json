@@ -1,0 +1,71 @@
+{
+  "iconsQuick": [
+    {
+      "src": "/img/icons/cw-icons-btc.png",
+      "alt": "My BTC Deposit",
+      "title": "My BTC Deposit"
+    },
+    {
+      "src": "/img/icons/cw-icons-coin.png",
+      "alt": "My Cresow Coins",
+      "title": "My Cresow Coins"
+    },
+    {
+      "src": "/img/icons/cw-icons-people.png",
+      "alt": "Registered ICO Participants",
+      "title": "Registered"
+    },
+    {
+      "src": "/img/icons/cw-icons-btc.png",
+      "alt": "BTC Raised in Cresow ICO",
+      "title": "BTC Raised"
+    }
+  ],
+  "staticInfo":[
+    { "src": "/img/icons/cw-icons-receive.png",
+      "title": "Receive FREE CresowPay",
+      "desc": "Free Cresow airdrop",
+      "url": "#",
+      "url_title": "Yes, I want",
+      "id": "cresow-pay"
+    },
+    { "src": "/img/icons/cw-icons-buy.png",
+      "title": "Purchase with Bitcoin",
+      "desc": "Purchase CresowPay with Bitcoin",
+      "url": "#",
+      "url_title": "Download",
+      "id": "purchase-bitcoin"
+    },
+    { "src": "/img/icons/cw-icons-abt.png",
+      "title": "About CresowPay",
+      "desc": "Learn more about CresowPay and the Cresow project",
+      "url": "#",
+      "url_title": "Read the White Paper",
+      "id": "cresow-whitepaper"
+    },
+    { "src": "/img/icons/cw-icons-bonus.png",
+      "title": "50% Bonus Expiry Information",
+      "id": "cresow-bonus"
+    }
+  ],
+  "salesStat": [
+    { "src": "/img/icons/cw-icons-users.png",
+      "title": "Cresow Sale Participants",
+      "unit": "Participants",
+      "id": "cresow-sale",
+      "eth": false
+    },
+    { "src": "/img/icons/cw-icons-sold.png",
+      "title": "Total CresowPay Sold",
+      "unit": "CresowPay",
+      "id": "cresow-tokens",
+      "eth": false
+    },
+    { "src": "/img/icons/cw-icons-raised.png",
+      "title": "Total BTC Raised",
+      "unit": "BTC",
+      "id": "cresow-raised",
+      "eth": true
+    }
+  ]
+}
