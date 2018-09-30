@@ -408,7 +408,7 @@ body {
 }
 
 a {
-  color: #3273dc;
+  color: #767676 !important;
   cursor: pointer;
   text-decoration: none;
 }
@@ -15000,3 +15000,46 @@ a:hover {
 }
 
 /*# sourceMappingURL=src/maps/main.css.map */
+
+
+
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.result.green {
+    color: green;
+}
+.result.red {
+    color: red;
+}
+.full-width {
+    width: 100%;
+}
+
+.width-80 {
+    width: 80%;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+table tfoot th {
+    background: #fff7dd !important;
+}
+
+.table .thead-light th {
+    background-color: #f6dc8e !important
+}
+
+.countdown {
+    font-size: 20px;
+    text-align: center;
+}
+.th-special {
+    background: black;
+    color: white !important;
+}
