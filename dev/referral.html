@@ -63,12 +63,11 @@
                                         <span class="result green"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label for="ethAmount">Deposit Amount (ETH)</label>
+                                        <label for="ethAmount">Deposit Amount (USD)</label>
                                         <input maxlength="6" autocomplete="off" type="number" class="form-control" id="ethAmount"
-                                            placeholder="Enter ETH Amount" onkeydown="javascript: return event.keyCode == 69 ? false : true"
-                                            required>
-                                        <small id="ethAmountHelp" class="form-text text-muted">Enter amount to see the
-                                            conversion rate</small>
+                                            placeholder="Enter USD Amount" required>
+                                        <!-- <small id="ethAmountHelp" class="form-text text-muted">Enter amount to see the
+                                            conversion rate</small> -->
                                     </div>
 
                                     <div class="modal-footer">
@@ -99,7 +98,7 @@
                                 <div class="full-width cw-pad-15">
                                     <div class="cw-t-bold full-width">Public Key</div>
                                     <div class="full-width">
-                                        <span id="pubKey">akjgsd72jkjh8a73hekjnla873kjnl</span>
+                                        <span id="pubKey">0x35D6E8d02089b3e4577E47102fd4C5396c479e09</span>
                                         <i onclick="copyTextKey()" id="copyKey" class="fa fa-copy cursor-pointer"></i>
                                         <span id="copied"></span>
                                     </div>
@@ -159,33 +158,33 @@
 
         <script>
             $('.hamburger').on('click', function (e) {
-            $('.hamburger').toggleClass('is-active');
-            $('.cw-sidebar-left').toggleClass('is-hidden-touch', 200, 'easeInOutSine');
-            $('nav').toggleClass('is-hidden-touch', 200, 'easeInOutSine');
-        });
+                $('.hamburger').toggleClass('is-active');
+                $('.cw-sidebar-left').toggleClass('is-hidden-touch', 200, 'easeInOutSine');
+                $('nav').toggleClass('is-hidden-touch', 200, 'easeInOutSine');
+            });
 
-        $('.cw-js-percent').on('click', function () {
-            $('.cw-header-percent-content').toggleClass('cw-hide');
-        });
+            $('.cw-js-percent').on('click', function () {
+                $('.cw-header-percent-content').toggleClass('cw-hide');
+            });
 
-        $('.cw-header-toggle-state').on('click', function () {
-            if ($(this).prop('checked') === true) {
-                $(this).parents()
-                    .find('.cw-theme-dark')
-                    .removeClass('cw-theme-dark')
-                    .addClass('cw-theme-light');
-                $('#cw-id-toggle-theme-dark').removeClass('cw-t-bold cw-t-brand2');
-                $('#cw-id-toggle-theme-light').addClass('cw-t-bold cw-t-brand2');
-            } else {
-                $(this).parents()
-                    .find('.cw-theme-light')
-                    .removeClass('cw-theme-light')
-                    .addClass('cw-theme-dark');
-                $('#cw-id-toggle-theme-light').removeClass('cw-t-bold cw-t-brand2');
-                $('#cw-id-toggle-theme-dark').addClass('cw-t-bold cw-t-brand2');
-            }
-        });
-    </script>
+            $('.cw-header-toggle-state').on('click', function () {
+                if ($(this).prop('checked') === true) {
+                    $(this).parents()
+                        .find('.cw-theme-dark')
+                        .removeClass('cw-theme-dark')
+                        .addClass('cw-theme-light');
+                    $('#cw-id-toggle-theme-dark').removeClass('cw-t-bold cw-t-brand2');
+                    $('#cw-id-toggle-theme-light').addClass('cw-t-bold cw-t-brand2');
+                } else {
+                    $(this).parents()
+                        .find('.cw-theme-light')
+                        .removeClass('cw-theme-light')
+                        .addClass('cw-theme-dark');
+                    $('#cw-id-toggle-theme-light').removeClass('cw-t-bold cw-t-brand2');
+                    $('#cw-id-toggle-theme-dark').addClass('cw-t-bold cw-t-brand2');
+                }
+            });
+        </script>
 
         <div class="columns">
             <div class="column is-2-desktop is-hidden-touch cw-sidebar-wrapper cw-sidebar-left cw-pad-0">
@@ -338,29 +337,33 @@
 
                 <script>
                     $('.cw-sidebar-dropdown > a').click(function () {
-                    $('.cw-sidebar-submenu').slideUp(175);
-                    if ($(this).parent().hasClass('active')) {
-                        $('.cw-sidebar-dropdown').removeClass('active');
-                        $(this).parent().removeClass('active');
-                    } else {
-                        $('.cw-sidebar-dropdown').removeClass('active');
-                        $(this).next('.cw-sidebar-submenu').slideDown(175);
-                        $(this).parent().addClass('active');
-                    }
-                });
-            </script>
+                        $('.cw-sidebar-submenu').slideUp(175);
+                        if ($(this).parent().hasClass('active')) {
+                            $('.cw-sidebar-dropdown').removeClass('active');
+                            $(this).parent().removeClass('active');
+                        } else {
+                            $('.cw-sidebar-dropdown').removeClass('active');
+                            $(this).next('.cw-sidebar-submenu').slideDown(175);
+                            $(this).parent().addClass('active');
+                        }
+                    });
+                </script>
             </div>
-            <div class="column is-10-desktop cw-main-content">
-                <div>
-                    <!-- <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
-                        aria-expanded="false" aria-controls="collapseExample">
-                        Button 1
-                    </button> -->
+            <div style="max-width: 75%; text-align: center;" class="column cw-main-content col-12">
+                <div class="width-80 cw-mar-r-20">
+                    <button class="button is-rounded cw-btn cw-btn-primary cw-btn-action">
+                        Level 1
+                    </button>
+                    <button class="button is-rounded cw-btn cw-btn-primary cw-btn-action">
+                        Level 2
+                    </button>
+                    <button class="button is-rounded cw-btn cw-btn-primary cw-btn-action">
+                        Level 3
+                    </button>
                 </div>
             </div>
         </div>
-    </div>
-    <script src="./js/script.js"></script>
+        <script src="./js/script.js"></script>
 </body>
 
 </html>

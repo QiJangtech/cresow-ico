@@ -1,12 +1,12 @@
 
 /** @Description ETH to CFX Conversion rate display*/
 
-$("#ethAmount").keyup(function () {
-    var ethVal = this.value;
-    var cfxRate = 1000;
-    var convertedAmt = cfxRate * ethVal;
-    $("#ethAmountHelp").html(ethVal + ' ETH = ' + convertedAmt + ' CRX');
-});
+// $("#ethAmount").keyup(function () {
+//     var ethVal = this.value;
+//     var cfxRate = 1000;
+//     var convertedAmt = cfxRate * ethVal;
+//     $("#ethAmountHelp").html(ethVal + ' ETH = ' + convertedAmt + ' CRX');
+// });
 
 /** @Description ETH Address manual validation*/
 
