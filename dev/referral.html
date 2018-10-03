@@ -65,14 +65,15 @@
                                     <div class="form-group">
                                         <label for="ethAmount">Deposit Amount (USD)</label>
                                         <input maxlength="6" autocomplete="off" type="number" class="form-control" id="ethAmount"
-                                            placeholder="Enter USD Amount" required>
-                                        <!-- <small id="ethAmountHelp" class="form-text text-muted">Enter amount to see the
-                                            conversion rate</small> -->
+                                            placeholder="Enter USD Amount" onkeydown="javascript: return event.keyCode == 69 ? false : true"
+                                            required>
+                                        <small id="ethAmountHelp" class="form-text text-muted">Enter amount to see the
+                                            conversion rate</small>
                                     </div>
 
                                     <div class="modal-footer">
-                                        <button id="depositBtn" data-dismiss="modal" data-toggle="modal" data-target="#successModal"
-                                            type="submit" class="button is-rounded cw-btn cw-btn-primary cw-btn-action">Deposit</button>
+                                        <button id="nextBtn" data-dismiss="modal" data-toggle="modal" data-target="#successModal"
+                                            type="submit" class="button is-rounded cw-btn cw-btn-primary cw-btn-action">Next</button>
                                     </div>
                                 </form>
                             </div>
@@ -92,6 +93,10 @@
                                 </button>
                             </div>
                             <div class="modal-body">
+                                <div>
+                                    <p id="rank"></p>
+                                    <p id="body_rank"></p>
+                                </div>
                                 <div class="full-width has-text-centered">
                                     <img src="img/qr.png" width="50%" />
                                 </div>
@@ -102,6 +107,10 @@
                                         <i onclick="copyTextKey()" id="copyKey" class="fa fa-copy cursor-pointer"></i>
                                         <span id="copied"></span>
                                     </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button id="depositBtn" data-dismiss="modal" data-toggle="modal" data-target="#successModal"
+                                        type="submit" class="button is-rounded cw-btn cw-btn-primary cw-btn-action">Deposit</button>
                                 </div>
                             </div>
                         </div>

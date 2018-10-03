@@ -1,16 +1,60 @@
+localStorage.clear();
+
+$("#nextBtn").click(function () {
+    var ethUSDval = $('#ethAmount').val();
+    var ranking;
+
+    if (ethUSDval >= 500 && ethUSDval <= 2499) {
+        ranking = "Bronze";
+    } 
+    else if (ethUSDval >= 2500 && ethUSDval <= 9999) {
+        ranking = "Silver";
+    } 
+    else if (ethUSDval >= 10000 && ethUSDval <= 24999) {
+        ranking = "Gold";
+    } 
+    else if (ethUSDval >= 25000 && ethUSDval <= 50000) {
+        ranking = "Platinum";
+    }
+
+    if (ranking != undefined || ranking != null) {
+        document.getElementById("rank").innerHTML = 'Your rank is ' + ranking + " based on the bonus structure";
+        localStorage.setItem("ranking", ranking);
+    }
+
+})
+
+$("#depositBtn").click(function () {
+
+    var body = {
+        crx: localStorage.getItem("crx"),
+        usd: localStorage.getItem("usd"),
+        ethAddress: localStorage.getItem("eth_address"),
+        ranking: localStorage.getItem("ranking"),
+        
+    }
+
+    console.log(body);
+})
 
 /** @Description ETH to CFX Conversion rate display*/
+var ethAddressVal = document.getElementById("ethAddress");
 
-// $("#ethAmount").keyup(function () {
-//     var ethVal = this.value;
-//     var cfxRate = 1000;
-//     var convertedAmt = cfxRate * ethVal;
-//     $("#ethAmountHelp").html(ethVal + ' ETH = ' + convertedAmt + ' CRX');
-// });
+$("#ethAmount").keyup(function () {
+    var ethVal = this.value;
+    var cfxRate = 0.03;
+    var convertedAmt = ethVal / cfxRate;
+    var ethAddress = document.getElementById("ethAddress");
+
+    localStorage.setItem("crx", convertedAmt);
+    localStorage.setItem("usd", ethVal);
+    localStorage.setItem("eth_address", ethAddress);
+
+    $("#ethAmountHelp").html(ethVal + ' USD = ' + convertedAmt + ' CRX');
+});
 
 /** @Description ETH Address manual validation*/
 
-var ethAddressVal = document.getElementById("ethAddress");
 $("#ethAddress").keyup(function () {
     if (ethAddressVal.checkValidity()) {
         $(".result").html("Valid Address");
@@ -28,7 +72,7 @@ $("#ethAddress").keyup(function () {
 });
 
 function copyTextKey() {
- document.getElementById("pubKey").select();
+    document.getElementById("pubKey").select();
     /* Copy the text inside the text field */
     document.execCommand("copy");
     $("#copied").html("Copied").setTimeout(100);
@@ -40,7 +84,7 @@ function copyTextKey() {
 var countDownDate = new Date("Jan 5, 2019 15:37:25").getTime();
 
 // Update the count down every 1 second
-var x = setInterval(function() {
+var x = setInterval(function () {
 
     // Get todays date and time
     var now = new Date().getTime();
