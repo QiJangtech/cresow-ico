@@ -4,15 +4,15 @@
 * Usage: color: palette(brand,tan);
 */
 /*
-* Function for image paths 
+* Function for image paths
 * Link: http://selfteach.me/sass-extends-mixins-functions/
 * Usage: path("my-background-image.jpg");
 		@include path("facebook.png", "img/icons");
-		@include path("icons/facebook.png"); 
+		@include path("icons/facebook.png");
 */
 /************************** UTILITIES **************************/
 /************************** SHAPES **************************/
-/* .read-more { 
+/* .read-more {
 *		&:before {
 *			@include arrow (right, 3px, black);
 *		}
@@ -15033,6 +15033,14 @@ table tfoot th {
 
 .table .thead-light th {
     background-color: #f6dc8e !important
+}
+
+.table .thead-ref th:first-child {
+  background-color: #f6dc8e !important;
+}
+
+tbody .td-ref {
+  background-color: #f6dc8e !important;
 }
 
 .countdown {
