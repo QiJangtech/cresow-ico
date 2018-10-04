@@ -6,14 +6,11 @@ $("#nextBtn").click(function () {
 
     if (ethUSDval >= 500 && ethUSDval <= 2499) {
         ranking = "Bronze";
-    } 
-    else if (ethUSDval >= 2500 && ethUSDval <= 9999) {
+    } else if (ethUSDval >= 2500 && ethUSDval <= 9999) {
         ranking = "Silver";
-    } 
-    else if (ethUSDval >= 10000 && ethUSDval <= 24999) {
+    } else if (ethUSDval >= 10000 && ethUSDval <= 24999) {
         ranking = "Gold";
-    } 
-    else if (ethUSDval >= 25000 && ethUSDval <= 50000) {
+    } else if (ethUSDval >= 25000 && ethUSDval <= 50000) {
         ranking = "Platinum";
     }
 
@@ -29,9 +26,9 @@ $("#nextBtn").click(function () {
 var getUrlParam = function getUrlParameter(sParam) {
 
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-    sURLVariables = sPageURL.split('&'),
-    sParameterName,
-    i;
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
 
     for (i = 0; i < sURLVariables.length; i++) {
         sParameterName = sURLVariables[i].split('=');
@@ -49,43 +46,47 @@ $.ajax({
     headers: {
         "Authorization": 'Bearer ' + getUrlParam('token')
     },
-    success: function(res) {
+    success: function (res) {
         console.log(res);
         localStorage.setItem("user_id", res.result.id);
     },
-    error: function(res) {
+    error: function (res) {
         console.log(res);
     }
 })
 
 $("#depositBtn").click(function () {
 
+    var eth_val;
+    var body;
+
     $.ajax({
         type: 'GET',
         url: "https://u03g7xi1gh.execute-api.us-east-1.amazonaws.com/dev/crypto/ETH",
-        success: function(res) {
+        success: function (res) {
             var usdVal = localStorage.getItem("usd");
             var convertedETH = usdVal / res.message;
-            localStorage.setItem("eth_val", convertedETH);
-            console.log(convertedETH);
+            eth_val = convertedETH;
+            set_body();
         },
-        error: function(res) {
+        error: function (res) {
             console.log(res);
         }
     })
 
-    var body = {
+   function set_body() {
+     body = {
         crx_token: localStorage.getItem("crx"),
         usd_amount: localStorage.getItem("usd"),
         from_address: localStorage.getItem("eth_address"),
         package: localStorage.getItem("ranking"),
         userId: localStorage.getItem("user_id"),
-        eth_amount: localStorage.getItem("eth_val")
+        eth_amount: eth_val
     }
 
-    setTimeout(function(){
-        console.log(body);
-    }, 5000);
+    console.log(body);
+
+   }
 
 })
 
@@ -96,11 +97,10 @@ $("#ethAmount").keyup(function () {
     var ethVal = this.value;
     var cfxRate = 0.03;
     var convertedAmt = ethVal / cfxRate;
-    var ethAddress = document.getElementById("ethAddress");
 
     localStorage.setItem("crx", convertedAmt);
     localStorage.setItem("usd", ethVal);
-    localStorage.setItem("eth_address", ethAddress);
+    localStorage.setItem("eth_address", ethAddressVal);
 
     $("#ethAmountHelp").html(ethVal + ' USD = ' + convertedAmt + ' CRX');
 });
