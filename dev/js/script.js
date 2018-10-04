@@ -17,6 +17,8 @@ $("#nextBtn").click(function () {
         ranking = "Platinum";
     }
 
+    // var ethValue = ethUSDval * 
+
     if (ranking != undefined || ranking != null) {
         document.getElementById("rank").innerHTML = 'Your rank is ' + ranking + " based on the bonus structure";
         localStorage.setItem("ranking", ranking);
@@ -24,14 +26,44 @@ $("#nextBtn").click(function () {
 
 })
 
+var getUrlParam = function getUrlParameter(sParam) {
+
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+    sURLVariables = sPageURL.split('&'),
+    sParameterName,
+    i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
 $("#depositBtn").click(function () {
 
+    $.ajax({
+        type: 'GET',
+        url: "https://u03g7xi1gh.execute-api.us-east-1.amazonaws.com/dev/crypto/ETH",
+        success: function(res) {
+            var usdVal = localStorage.getItem("usd");
+            var convertedETH = usdVal * res.message;
+            localStorage.setItem("eth", convertedETH);
+        },
+        error: function(res) {
+            console.log(res);
+        }
+    })
+
     var body = {
-        crx: localStorage.getItem("crx"),
-        usd: localStorage.getItem("usd"),
-        ethAddress: localStorage.getItem("eth_address"),
-        ranking: localStorage.getItem("ranking"),
-        
+        crx_token: localStorage.getItem("crx"),
+        usd_amount: localStorage.getItem("usd"),
+        from_address: localStorage.getItem("eth_address"),
+        package: localStorage.getItem("ranking"),
+        userId: "",
+        eth_amount: localStorage.getItem("usd")
     }
 
     console.log(body);
