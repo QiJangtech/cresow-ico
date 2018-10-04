@@ -42,6 +42,22 @@ var getUrlParam = function getUrlParameter(sParam) {
     }
 };
 
+
+$.ajax({
+    type: 'GET',
+    url: "http://18.136.101.29/api/profile/users",
+    headers: {
+        "Authorization": 'Bearer ' + getUrlParam('token')
+    },
+    success: function(res) {
+        console.log(res);
+        localStorage.setItem("user_id", res.result.id);
+    },
+    error: function(res) {
+        console.log(res);
+    }
+})
+
 $("#depositBtn").click(function () {
 
     $.ajax({
@@ -49,8 +65,9 @@ $("#depositBtn").click(function () {
         url: "https://u03g7xi1gh.execute-api.us-east-1.amazonaws.com/dev/crypto/ETH",
         success: function(res) {
             var usdVal = localStorage.getItem("usd");
-            var convertedETH = usdVal * res.message;
-            localStorage.setItem("eth", convertedETH);
+            var convertedETH = usdVal / res.message;
+            localStorage.setItem("eth_val", convertedETH);
+            console.log(convertedETH);
         },
         error: function(res) {
             console.log(res);
@@ -62,11 +79,14 @@ $("#depositBtn").click(function () {
         usd_amount: localStorage.getItem("usd"),
         from_address: localStorage.getItem("eth_address"),
         package: localStorage.getItem("ranking"),
-        userId: "",
-        eth_amount: localStorage.getItem("usd")
+        userId: localStorage.getItem("user_id"),
+        eth_amount: localStorage.getItem("eth_val")
     }
 
-    console.log(body);
+    setTimeout(function(){
+        console.log(body);
+    }, 5000);
+
 })
 
 /** @Description ETH to CFX Conversion rate display*/
