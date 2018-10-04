@@ -21,6 +21,42 @@
 
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.js"></script>
+    <style>
+      /* Style the tab */
+      .tab {
+          overflow: hidden;
+          border: 1px solid #ccc;
+          background-color: #f1f1f1;
+      }
+
+      /* Style the buttons inside the tab */
+      .tab button {
+          background-color: inherit;
+          float: left;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          padding: 14px 16px;
+          transition: 0.3s;
+          font-size: 17px;
+      }
+
+      /* Change background color of buttons on hover */
+      .tab button:hover {
+          background-color: #ddd;
+      }
+
+      /* Create an active/current tablink class */
+      .tab button.active {
+          background-color: #ccc;
+      }
+
+      /* Style the tab content */
+      .tabcontent {
+          display: none;
+          margin-top: 30px;
+      }
+    </style>
 </head>
 
 <body>
@@ -360,17 +396,165 @@
             </div>
             <div style="max-width: 75%; text-align: center;" class="column cw-main-content col-12">
                 <div class="width-80 cw-mar-r-20">
-                    <button class="button is-rounded cw-btn cw-btn-primary cw-btn-action">
+                    <button class="button is-rounded cw-btn cw-btn-primary cw-btn-action" onclick="openCity(event, 'level1')">
                         Level 1
                     </button>
-                    <button class="button is-rounded cw-btn cw-btn-primary cw-btn-action">
+                    <button class="button is-rounded cw-btn cw-btn-primary cw-btn-action" onclick="openCity(event, 'level2')">
                         Level 2
                     </button>
-                    <button class="button is-rounded cw-btn cw-btn-primary cw-btn-action">
+                    <button class="button is-rounded cw-btn cw-btn-primary cw-btn-action" onclick="openCity(event, 'level3')">
                         Level 3
                     </button>
+
+
+                    <div id="level1" class="tabcontent">
+                      <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="th-special has-text-centered">
+                                        Level 1
+                                    </th>
+                                </tr>
+                            </thead>
+                            <thead class="thead-ref">
+                                <tr>
+                                    <th>Users</th>
+                                    <th>Bonus %</th>
+                                    <th>ETH Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="td-ref">500 - 2499</td>
+                                    <td>5% </td>
+                                    <td>3%</td>
+                                </tr>
+                                <tr>
+                                    <td class="td-ref">2500 - 9999</td>
+                                    <td>7%</td>
+                                    <td>3%</td>
+                                </tr>
+                                <tr>
+                                    <td class="td-ref">10000 - 24999</td>
+                                    <td>9%</td>
+                                    <td>3%</td>
+                                </tr>
+                                <tr>
+                                    <td class="td-ref">25000 - 50000</td>
+                                    <td>12%</td>
+                                    <td>3%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    <div id="level2" class="tabcontent">
+                      <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="th-special has-text-centered">
+                                        Level 2
+                                    </th>
+                                </tr>
+                            </thead>
+                            <thead class="thead-ref">
+                                <tr>
+                                    <th>Users</th>
+                                    <th>Bonus %</th>
+                                    <th>ETH Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="td-ref">500 - 2499</td>
+                                    <td>5% </td>
+                                    <td>3%</td>
+                                </tr>
+                                <tr>
+                                    <td class="td-ref">2500 - 9999</td>
+                                    <td>7%</td>
+                                    <td>3%</td>
+                                </tr>
+                                <tr>
+                                    <td class="td-ref">10000 - 24999</td>
+                                    <td>9%</td>
+                                    <td>3%</td>
+                                </tr>
+                                <tr>
+                                    <td class="td-ref">25000 - 50000</td>
+                                    <td>12%</td>
+                                    <td>3%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    <div id="level3" class="tabcontent">
+                      <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="th-special has-text-centered">
+                                        Level 3
+                                    </th>
+                                </tr>
+                            </thead>
+                            <thead class="thead-ref">
+                                <tr>
+                                    <th>Users</th>
+                                    <th>Bonus %</th>
+                                    <th>ETH Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="td-ref">500 - 2499</td>
+                                    <td>5% </td>
+                                    <td>3%</td>
+                                </tr>
+                                <tr>
+                                    <td class="td-ref">2500 - 9999</td>
+                                    <td>7%</td>
+                                    <td>3%</td>
+                                </tr>
+                                <tr>
+                                    <td class="td-ref">10000 - 24999</td>
+                                    <td>9%</td>
+                                    <td>3%</td>
+                                </tr>
+                                <tr>
+                                    <td class="td-ref">25000 - 50000</td>
+                                    <td>12%</td>
+                                    <td>3%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                      </div>
+                    </div>
+
                 </div>
+
             </div>
+
+            <script>
+            function openCity(evt, cityName) {
+                var i, tabcontent, tablinks;
+                tabcontent = document.getElementsByClassName("tabcontent");
+                for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablinks");
+                for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+                document.getElementById(cityName).style.display = "block";
+                evt.currentTarget.className += " active";
+            }
+            </script>
         </div>
         <script src="./js/script.js"></script>
 </body>
