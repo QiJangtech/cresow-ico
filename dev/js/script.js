@@ -49,11 +49,43 @@ $.ajax({
     success: function (res) {
         console.log(res);
         localStorage.setItem("user_id", res.result.id);
+        header_user(res);
+        detailReferralByID(res.result.id);
     },
     error: function (res) {
         console.log(res);
     }
 })
+
+$.ajax({
+    type: 'GET',
+    url: 'http://18.136.101.29/api/registered_users',
+    success: function (res) {
+        console.log(res);
+        totalUsers(res);
+    },
+    error: function (res) {
+        console.log(res);
+    }
+})
+
+function detailReferralByID(data_id) {
+    $.ajax({
+        type: 'GET',
+        url: 'http://18.136.101.29/api/referral_records/' + data_id,
+        headers: {
+            "Authorization": 'Bearer ' + getUrlParam('token')
+        },
+        success: function (res) {
+            console.log(res);
+            document.getElementById("referral_bonus").innerHTML = res.result.bonus;
+            document.getElementById("user_crx").innerHTML = res.result.amount_eth;
+        },
+        error: function (res) {
+            console.log(res);
+        }
+    })
+}
 
 $("#depositBtn").click(function () {
 
@@ -171,3 +203,14 @@ var x = setInterval(function () {
     document.getElementById("seconds").innerHTML = seconds;
 
 }, 1000);
+
+function header_user(data){
+    document.getElementById("referral_id_user").innerHTML = '(' + 'Ref_ID : ' + data.result.referral_id + ')';
+    document.getElementById("dashboard_username").innerHTML = data.result.first_name + ' ' + data.result.last_name;
+    // document.getElementById("referral_bonus").innerHTML = "BONUSGG";
+    // document.getElementById("user_crx").innerHTML = "CRXGG";
+}
+
+function totalUsers(data){
+    document.getElementById("total_users").innerHTML = data.result + ' ' + "users";
+}

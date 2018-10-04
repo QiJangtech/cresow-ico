@@ -63,17 +63,17 @@
                                         <span class="result green"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label for="ethAmount">Deposit Amount (ETH)</label>
+                                        <label for="ethAmount">Deposit Amount (USD)</label>
                                         <input maxlength="6" autocomplete="off" type="number" class="form-control" id="ethAmount"
-                                            placeholder="Enter ETH Amount" onkeydown="javascript: return event.keyCode == 69 ? false : true"
+                                            placeholder="Enter USD Amount" onkeydown="javascript: return event.keyCode == 69 ? false : true"
                                             required>
                                         <small id="ethAmountHelp" class="form-text text-muted">Enter amount to see the
                                             conversion rate</small>
                                     </div>
 
                                     <div class="modal-footer">
-                                        <button id="depositBtn" data-dismiss="modal" data-toggle="modal" data-target="#successModal"
-                                            type="submit" class="button is-rounded cw-btn cw-btn-primary cw-btn-action">Deposit</button>
+                                        <button id="nextBtn" data-dismiss="modal" data-toggle="modal" data-target="#successModal"
+                                            type="submit" class="button is-rounded cw-btn cw-btn-primary cw-btn-action">Next</button>
                                     </div>
                                 </form>
                             </div>
@@ -93,16 +93,24 @@
                                 </button>
                             </div>
                             <div class="modal-body">
+                                <div>
+                                    <p id="rank"></p>
+                                    <p id="body_rank"></p>
+                                </div>
                                 <div class="full-width has-text-centered">
                                     <img src="img/qr.png" width="50%" />
                                 </div>
                                 <div class="full-width cw-pad-15">
                                     <div class="cw-t-bold full-width">Public Key</div>
                                     <div class="full-width">
-                                        <span id="pubKey">akjgsd72jkjh8a73hekjnla873kjnl</span>
+                                        <span id="pubKey">0x35D6E8d02089b3e4577E47102fd4C5396c479e09</span>
                                         <i onclick="copyTextKey()" id="copyKey" class="fa fa-copy cursor-pointer"></i>
                                         <span id="copied"></span>
                                     </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button id="depositBtn" data-dismiss="modal" data-toggle="modal" data-target="#successModal"
+                                        type="submit" class="button is-rounded cw-btn cw-btn-primary cw-btn-action">Deposit</button>
                                 </div>
                             </div>
                         </div>
@@ -127,19 +135,23 @@
     </div>
     -->
             </div>
-            <div class="cw-header-container cw-header-percent">
+            <!-- <div class="cw-header-container cw-header-percent">
                 <a class="button cw-btn cw-btn-outline cw-btn-outline-secondary cw-btn-circle cw-t-brand2 cw-js-percent">%</a>
                 <div class="cw-header-percent-content cw-hide">Long text about how many percent</div>
-            </div>
+            </div> -->
             <div class="cw-header-container cw-user-info">
                 <span class="cw-user-pic">
                     <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/bootstrap4/assets/img/user.jpg"
                         alt="User picture">
                 </span>
-                <span class="cw-user-name">Brittany Perez</span>
+                <div>
+                    <div id="dashboard_username" class="cw-user-name"></div>
+                    <div id="referral_id_user"></div>
+                </div>
+
             </div>
             <div class="cw-header-container cw-header-logout">
-                <label class="cw-header-toggle-label">
+                <!-- <label class="cw-header-toggle-label">
                     <div id="cw-id-toggle-theme-dark" class="cw-header-toggle-text cw-t-bold cw-t-brand2">dark</div>
                     <div class="cw-header-toggle">
                         <input class="cw-header-toggle-state" type="checkbox" name="check" value="check" />
@@ -149,7 +161,7 @@
                         <div class="cw-header-toggle-active"></div>
                     </div>
                     <div id="cw-id-toggle-theme-light" class="cw-header-toggle-text">light</div>
-                </label>
+                </label> -->
 
                 <a href="#" title="Log out">
                     <span class="icon"><i class="fas fa-power-off"></i></span>
@@ -323,7 +335,7 @@
                         <!-- cw-sidebar-menu  -->
                     </div>
                     <!-- cw-sidebar-content  -->
-                    <div class="cw-sidebar-footer">
+                    <!-- <div class="cw-sidebar-footer">
                         <div>
                             <p class="is-size-7">Wallet balance:</p>
                             <p class="has-text-weight-bold">$101</p>
@@ -332,7 +344,7 @@
                             <a href="#" class="button is-rounded cw-btn cw-btn-primary cw-btn-action is-size-7">Add
                                 Funds</a>
                         </div>
-                    </div>
+                    </div> -->
                 </nav>
 
 
@@ -369,8 +381,8 @@
                                     </figure>
                                 </div>
                                 <div class="media-content">
-                                    <p class="title is-7 is-spaced cw-mar-b-5 cw-mar-t-5">My BTC Deposit</p>
-                                    <p class="subtitle is-6 has-text-weight-bold cw-t-brand2">320 ETH</p>
+                                    <p class="title is-7 is-spaced cw-mar-b-5 cw-mar-t-5">My ETH Deposit</p>
+                                    <p class="subtitle is-6 has-text-weight-bold cw-t-brand2">TBA</p>
                                 </div>
                             </div>
                         </div>
@@ -384,7 +396,7 @@
                                 </div>
                                 <div class="media-content">
                                     <p class="title is-7 is-spaced cw-mar-b-5 cw-mar-t-5">My Cresow Coins</p>
-                                    <p class="subtitle is-6 has-text-weight-bold cw-t-brand2">100 Million</p>
+                                    <p id="user_crx" class="subtitle is-6 has-text-weight-bold cw-t-brand2">100 Million</p>
                                 </div>
                             </div>
                         </div>
@@ -398,7 +410,7 @@
                                 </div>
                                 <div class="media-content">
                                     <p class="title is-7 is-spaced cw-mar-b-5 cw-mar-t-5">Registered</p>
-                                    <p class="subtitle is-6 has-text-weight-bold cw-t-brand2">@johnsmith</p>
+                                    <p id="total_users" class="subtitle is-6 has-text-weight-bold cw-t-brand2"></p>
                                 </div>
                             </div>
                         </div>
@@ -411,8 +423,8 @@
                                     </figure>
                                 </div>
                                 <div class="media-content">
-                                    <p class="title is-7 is-spaced cw-mar-b-5 cw-mar-t-5">BTC Raised</p>
-                                    <p class="subtitle is-6 has-text-weight-bold cw-t-brand2">@johnsmith</p>
+                                    <p class="title is-7 is-spaced cw-mar-b-5 cw-mar-t-5">Referral Bonus</p>
+                                    <p id="referral_bonus" class="subtitle is-6 has-text-weight-bold cw-t-brand2"></p>
                                 </div>
                             </div>
                         </div>
