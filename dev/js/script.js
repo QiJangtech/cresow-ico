@@ -74,19 +74,32 @@ $("#depositBtn").click(function () {
         }
     })
 
-   function set_body() {
-     body = {
-        crx_token: localStorage.getItem("crx"),
-        usd_amount: localStorage.getItem("usd"),
-        from_address: localStorage.getItem("eth_address"),
-        package: localStorage.getItem("ranking"),
-        userId: localStorage.getItem("user_id"),
-        eth_amount: eth_val
+    function set_body() {
+        body = {
+            crx_token: localStorage.getItem("crx"),
+            usd_amount: localStorage.getItem("usd"),
+            from_address: localStorage.getItem("eth_address"),
+            package: localStorage.getItem("ranking"),
+            userId: localStorage.getItem("user_id"),
+            eth_amount: eth_val
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: "https://u03g7xi1gh.execute-api.us-east-1.amazonaws.com/dev/wallet/deposit",
+            contentType: 'application/json',
+            data: JSON.stringify(body),
+            dataType: 'json',
+            success: function (res) {
+                console.log("success", res)
+            },
+            error: function (res) {
+                console.log("error", res);
+            }
+        })
+
+        console.log(body);
     }
-
-    console.log(body);
-
-   }
 
 })
 
@@ -97,10 +110,11 @@ $("#ethAmount").keyup(function () {
     var ethVal = this.value;
     var cfxRate = 0.03;
     var convertedAmt = ethVal / cfxRate;
+    var ethAddress = document.getElementById("ethAddress").value;
 
     localStorage.setItem("crx", convertedAmt);
     localStorage.setItem("usd", ethVal);
-    localStorage.setItem("eth_address", ethAddressVal);
+    localStorage.setItem("eth_address", ethAddress);
 
     $("#ethAmountHelp").html(ethVal + ' USD = ' + convertedAmt + ' CRX');
 });
