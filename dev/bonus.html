@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="css/main.css">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
 
     <script src="./js/app.js"></script>
 
@@ -24,87 +24,98 @@
 </head>
 
 <body>
-<div class="cw-page-wrapper cw-theme-dark">
-    <header class="cw-header-wrapper">
-        <div class="cw-header-container cw-header-menu">
-            <button class="hamburger hamburger--slider" type="button">
+    <div class="cw-page-wrapper cw-theme-dark">
+        <header class="cw-header-wrapper">
+            <div class="cw-header-container cw-header-menu">
+                <button class="hamburger hamburger--slider" type="button">
                     <span class="hamburger-box">
                         <span class="hamburger-inner"></span>
                     </span>
-            </button>
-        </div>
-        <div class="cw-header-container cw-header-brand">
-            <img src="./img/cw-logo.png"/>
-        </div>
-        <div class="cw-header-container cw-header-deposit">
-            <div class="cw-header-deposit-large">
-                <!--<a class="button is-rounded cw-btn cw-btn-primary cw-btn-action">Deposit BTC</a>-->
-                <a data-dismiss="modal" data-toggle="modal" data-target="#depositModal"
-                   class="button is-rounded cw-btn cw-btn-primary cw-btn-action">Deposit ETH</a>
+                </button>
             </div>
-            <!-- Modal for Deposit -->
-            <div class="modal fade" id="depositModal" tabindex="-1" role="dialog" aria-labelledby="depositModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="depositModalLabel">Deposit Ethereum</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="depositForm">
-                                <div class="form-group">
-                                    <label for="ethAddress">From Address</label>
-                                    <input autocomplete="off" type="text" class="form-control" id="ethAddress" pattern="^0x[a-fA-F0-9]{40}$"
-                                           aria-describedby="ethAddress" placeholder="Enter your ETH Address" required>
-                                    <span class="result green"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="ethAmount">Deposit Amount (ETH)</label>
-                                    <input maxlength="6" autocomplete="off" type="number" class="form-control" id="ethAmount"
-                                           placeholder="Enter ETH Amount"
-                                           onkeydown="javascript: return event.keyCode == 69 ? false : true" required>
-                                    <small id="ethAmountHelp" class="form-text text-muted">Enter amount to see the conversion rate</small>
-                                </div>
+            <div class="cw-header-container cw-header-brand">
+                <img src="./img/cw-logo.png" />
+            </div>
+            <div class="cw-header-container cw-header-deposit">
+                <div class="cw-header-deposit-large">
+                    <!--<a class="button is-rounded cw-btn cw-btn-primary cw-btn-action">Deposit BTC</a>-->
+                    <a data-dismiss="modal" data-toggle="modal" data-target="#depositModal" class="button is-rounded cw-btn cw-btn-primary cw-btn-action">Deposit
+                        ETH</a>
+                </div>
+                <!-- Modal for Deposit -->
+                <div class="modal fade" id="depositModal" tabindex="-1" role="dialog" aria-labelledby="depositModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="depositModalLabel">Deposit Ethereum</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="depositForm">
+                                    <div class="form-group">
+                                        <label for="ethAddress">From Address</label>
+                                        <input autocomplete="off" type="text" class="form-control" id="ethAddress"
+                                            pattern="^0x[a-fA-F0-9]{40}$" aria-describedby="ethAddress" placeholder="Enter your ETH Address"
+                                            required>
+                                        <span class="result green"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ethAmount">Deposit Amount (USD)</label>
+                                        <input maxlength="6" autocomplete="off" type="number" class="form-control" id="ethAmount"
+                                            placeholder="Enter USD Amount" onkeydown="javascript: return event.keyCode == 69 ? false : true"
+                                            required>
+                                        <small id="ethAmountHelp" class="form-text text-muted">Enter amount to see the
+                                            conversion rate</small>
+                                    </div>
 
+                                    <div class="modal-footer">
+                                        <button id="nextBtn" data-dismiss="modal" data-toggle="modal" data-target="#successModal"
+                                            type="submit" class="button is-rounded cw-btn cw-btn-primary cw-btn-action">Next</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal for Success Deposit -->
+                <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="depositModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="successModalLabel">Successfully Deposited</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div>
+                                    <p id="rank"></p>
+                                    <p id="body_rank"></p>
+                                </div>
+                                <div class="full-width has-text-centered">
+                                    <img src="img/qr.png" width="50%" />
+                                </div>
+                                <div class="full-width cw-pad-15">
+                                    <div class="cw-t-bold full-width">Public Key</div>
+                                    <div class="full-width">
+                                        <span id="pubKey">0x35D6E8d02089b3e4577E47102fd4C5396c479e09</span>
+                                        <i onclick="copyTextKey()" id="copyKey" class="fa fa-copy cursor-pointer"></i>
+                                        <span id="copied"></span>
+                                    </div>
+                                </div>
                                 <div class="modal-footer">
-                                    <button id="depositBtn" data-dismiss="modal" data-toggle="modal" data-target="#successModal" type="submit" class="button is-rounded cw-btn cw-btn-primary cw-btn-action">Deposit</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Modal for Success Deposit -->
-            <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="depositModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="successModalLabel">Successfully Deposited</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="full-width has-text-centered">
-                                <img src="img/qr.png" width="50%" />
-                            </div>
-                            <div class="full-width cw-pad-15">
-                                <div class="cw-t-bold full-width">Public Key</div>
-                                <div class="full-width">
-                                    <span id="pubKey">akjgsd72jkjh8a73hekjnla873kjnl</span>
-                                    <i onclick="copyTextKey()" id="copyKey" class="fa fa-copy cursor-pointer"></i>
-                                    <span id="copied"></span>
+                                    <button id="depositBtn" data-dismiss="modal" data-toggle="modal" data-target="#successModal"
+                                        type="submit" class="button is-rounded cw-btn cw-btn-primary cw-btn-action">Deposit</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
 
 
@@ -112,7 +123,7 @@
 
 
 
-            <!--
+                <!--
     <div class="cw-header-deposit-small">
         <a class="button cw-btn cw-btn-primary cw-btn-action cw-btn-circle cw-btn-icon">
             <i class="fab fa-bitcoin"></i>
@@ -123,288 +134,286 @@
 
     </div>
     -->
-        </div>
-        <div class="cw-header-container cw-header-percent">
-            <a class="button cw-btn cw-btn-outline cw-btn-outline-secondary cw-btn-circle cw-t-brand2 cw-js-percent">%</a>
-            <div class="cw-header-percent-content cw-hide">Long text about how many percent</div>
-        </div>
-        <div class="cw-header-container cw-user-info">
-                <span class="cw-user-pic">
-                    <img class="img-responsive img-rounded"
-                         src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/bootstrap4/assets/img/user.jpg"
-                         alt="User picture">
-                </span>
-            <span class="cw-user-name">Brittany Perez</span>
-        </div>
-        <div class="cw-header-container cw-header-logout">
-            <label class="cw-header-toggle-label">
-                <div id="cw-id-toggle-theme-dark" class="cw-header-toggle-text cw-t-bold cw-t-brand2">dark</div>
-                <div class="cw-header-toggle">
-                    <input class="cw-header-toggle-state" type="checkbox" name="check" value="check"/>
-                    <div class="cw-header-toggle-inner">
-                        <div class="cw-header-toggle-indicator"></div>
-                    </div>
-                    <div class="cw-header-toggle-active"></div>
-                </div>
-                <div id="cw-id-toggle-theme-light" class="cw-header-toggle-text">light</div>
-            </label>
-
-            <a href="#" title="Log out">
-                <span class="icon"><i class="fas fa-power-off"></i></span>
-            </a>
-        </div>
-    </header>
-
-    <script>
-        $('.hamburger').on('click', function (e) {
-            $('.hamburger').toggleClass('is-active');
-            $('.cw-sidebar-left').toggleClass('is-hidden-touch', 200, 'easeInOutSine');
-            $('nav').toggleClass('is-hidden-touch', 200, 'easeInOutSine');
-        });
-
-        $('.cw-js-percent').on('click', function () {
-            $('.cw-header-percent-content').toggleClass('cw-hide');
-        });
-
-        $('.cw-header-toggle-state').on('click', function () {
-            if ($(this).prop('checked') === true) {
-                $(this).parents()
-                    .find('.cw-theme-dark')
-                    .removeClass('cw-theme-dark')
-                    .addClass('cw-theme-light');
-                $('#cw-id-toggle-theme-dark').removeClass('cw-t-bold cw-t-brand2');
-                $('#cw-id-toggle-theme-light').addClass('cw-t-bold cw-t-brand2');
-            } else {
-                $(this).parents()
-                    .find('.cw-theme-light')
-                    .removeClass('cw-theme-light')
-                    .addClass('cw-theme-dark');
-                $('#cw-id-toggle-theme-light').removeClass('cw-t-bold cw-t-brand2');
-                $('#cw-id-toggle-theme-dark').addClass('cw-t-bold cw-t-brand2');
-            }
-        });
-    </script>
-
-    <div class="columns">
-        <div class="column is-2-desktop is-hidden-touch cw-sidebar-wrapper cw-sidebar-left cw-pad-0">
-            <nav class="nav is-hidden-touch">
-                <div class="cw-sidebar-content">
-                    <div class="cw-sidebar-menu">
-                        <ul>
-                            <li>
-                                <a href="index.html">Home</a>
-                            </li>
-                            <li class="cw-sidebar-dropdown">
-                                <a href="#">My Account</a>
-                                <div class="cw-sidebar-submenu">
-                                    <div class="cw-user-info">
-                                            <span class="cw-user-pic">
-                                                <img class="img-responsive img-rounded"
-                                                     src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/bootstrap4/assets/img/user.jpg"
-                                                     alt="User picture">
-                                            </span>
-                                        <span class="cw-user-name">Brittany Perez</span>
-                                    </div>
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span>Profile</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span>Portfolio</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span>Settings</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="cw-sidebar-dropdown">
-                                <a href="#">Dashboard</a>
-                                <div class="cw-sidebar-submenu">
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span>Profile</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span>Portfolio</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span>Settings</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <li class="cw-sidebar-dropdown">
-                                <a href="#">Transaction</a>
-                                <div class="cw-sidebar-submenu">
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span>Profile</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span>Portfolio</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span>Settings</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="cw-sidebar-dropdown">
-                                <a href="#">Cresow Sale Stats</a>
-                                <div class="cw-sidebar-submenu">
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span>Profile</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span>Portfolio</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span>Settings</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="bonus.html">Bonus Structure</a>
-                            </li>
-
-                            <li>
-                                <a href="referral.html">Referral</a>
-                            </li>
-
-                            <li>
-                                <a href="#">Terms and Conditions</a>
-                            </li>
-                            <li>
-                                <a href="#">Privacy Policy</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- cw-sidebar-menu  -->
-                </div>
-                <!-- cw-sidebar-content  -->
-                <div class="cw-sidebar-footer">
-                    <div>
-                        <p class="is-size-7">Wallet balance:</p>
-                        <p class="has-text-weight-bold">$101</p>
-                    </div>
-                    <div class="has-text-right">
-                        <a href="#" class="button is-rounded cw-btn cw-btn-primary cw-btn-action is-size-7">Add
-                            Funds</a>
-                    </div>
-                </div>
-            </nav>
-
-
-            <script>
-                $('.cw-sidebar-dropdown > a').click(function () {
-                    $('.cw-sidebar-submenu').slideUp(175);
-                    if ($(this).parent().hasClass('active')) {
-                        $('.cw-sidebar-dropdown').removeClass('active');
-                        $(this).parent().removeClass('active');
-                    } else {
-                        $('.cw-sidebar-dropdown').removeClass('active');
-                        $(this).next('.cw-sidebar-submenu').slideDown(175);
-                        $(this).parent().addClass('active');
-                    }
-                });
-            </script>
-        </div>
-        <div class="column is-10-desktop cw-main-content">
-
-            <div class="width-80 cw-mar-r-20">
-
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th colspan="3" class="th-special has-text-centered">
-                                    Referral Bonus (ETH and BTC)
-                                </th>
-                            </tr>
-                        </thead>
-                        <thead class="thead-light">
-                            <tr>
-                                <th>Investment (USD)</th>
-                                <th>Level 1</th>
-                                <th>Level 2</th>
-                                <th>Level 3</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>500 - 2499</td>
-                                <td>5% </td>
-                                <td>3%</td>
-                                <td>2%</td>
-                            </tr>
-                            <tr>
-                                <td>2500 - 9999</td>
-                                <td>7%</td>
-                                <td>3%</td>
-                                <td>2%</td>
-                            </tr>
-                            <tr>
-                                <td>10000 - 24999</td>
-                                <td>9%</td>
-                                <td>3%</td>
-                                <td>2%</td>
-                            </tr>
-                            <tr>
-                                <td>25000 - 50000</td>
-                                <td>12%</td>
-                                <td>3%</td>
-                                <td>2%</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
             </div>
+            <div class="cw-header-container cw-header-percent">
+                <a class="button cw-btn cw-btn-outline cw-btn-outline-secondary cw-btn-circle cw-t-brand2 cw-js-percent">%</a>
+                <div class="cw-header-percent-content cw-hide">Long text about how many percent</div>
+            </div>
+            <div class="cw-header-container cw-user-info">
+                <span class="cw-user-pic">
+                    <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/bootstrap4/assets/img/user.jpg"
+                        alt="User picture">
+                </span>
+                <span class="cw-user-name">Brittany Perez</span>
+            </div>
+            <div class="cw-header-container cw-header-logout">
+                <label class="cw-header-toggle-label">
+                    <div id="cw-id-toggle-theme-dark" class="cw-header-toggle-text cw-t-bold cw-t-brand2">dark</div>
+                    <div class="cw-header-toggle">
+                        <input class="cw-header-toggle-state" type="checkbox" name="check" value="check" />
+                        <div class="cw-header-toggle-inner">
+                            <div class="cw-header-toggle-indicator"></div>
+                        </div>
+                        <div class="cw-header-toggle-active"></div>
+                    </div>
+                    <div id="cw-id-toggle-theme-light" class="cw-header-toggle-text">light</div>
+                </label>
 
+                <a href="#" title="Log out">
+                    <span class="icon"><i class="fas fa-power-off"></i></span>
+                </a>
+            </div>
+        </header>
+
+        <script>
+            $('.hamburger').on('click', function (e) {
+                $('.hamburger').toggleClass('is-active');
+                $('.cw-sidebar-left').toggleClass('is-hidden-touch', 200, 'easeInOutSine');
+                $('nav').toggleClass('is-hidden-touch', 200, 'easeInOutSine');
+            });
+
+            $('.cw-js-percent').on('click', function () {
+                $('.cw-header-percent-content').toggleClass('cw-hide');
+            });
+
+            $('.cw-header-toggle-state').on('click', function () {
+                if ($(this).prop('checked') === true) {
+                    $(this).parents()
+                        .find('.cw-theme-dark')
+                        .removeClass('cw-theme-dark')
+                        .addClass('cw-theme-light');
+                    $('#cw-id-toggle-theme-dark').removeClass('cw-t-bold cw-t-brand2');
+                    $('#cw-id-toggle-theme-light').addClass('cw-t-bold cw-t-brand2');
+                } else {
+                    $(this).parents()
+                        .find('.cw-theme-light')
+                        .removeClass('cw-theme-light')
+                        .addClass('cw-theme-dark');
+                    $('#cw-id-toggle-theme-light').removeClass('cw-t-bold cw-t-brand2');
+                    $('#cw-id-toggle-theme-dark').addClass('cw-t-bold cw-t-brand2');
+                }
+            });
+        </script>
+
+        <div class="columns">
+            <div class="column is-2-desktop is-hidden-touch cw-sidebar-wrapper cw-sidebar-left cw-pad-0">
+                <nav class="nav is-hidden-touch">
+                    <div class="cw-sidebar-content">
+                        <div class="cw-sidebar-menu">
+                            <ul>
+                                <li>
+                                    <a href="index.html">Home</a>
+                                </li>
+                                <!-- <li class="cw-sidebar-dropdown">
+                                    <a href="#">My Account</a>
+                                    <div class="cw-sidebar-submenu">
+                                        <div class="cw-user-info">
+                                            <span class="cw-user-pic">
+                                                <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/bootstrap4/assets/img/user.jpg"
+                                                    alt="User picture">
+                                            </span>
+                                            <span class="cw-user-name">Brittany Perez</span>
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Profile</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Portfolio</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Settings</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="cw-sidebar-dropdown">
+                                    <a href="#">Dashboard</a>
+                                    <div class="cw-sidebar-submenu">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Profile</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Portfolio</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Settings</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li class="cw-sidebar-dropdown">
+                                    <a href="#">Transaction</a>
+                                    <div class="cw-sidebar-submenu">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Profile</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Portfolio</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Settings</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="cw-sidebar-dropdown">
+                                    <a href="#">Cresow Sale Stats</a>
+                                    <div class="cw-sidebar-submenu">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Profile</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Portfolio</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    <span>Settings</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li> -->
+                                <li>
+                                    <a href="bonus.html">Bonus Structure</a>
+                                </li>
+
+                                <!-- <li>
+                                    <a href="referral.html">Referral</a>
+                                </li> -->
+
+                                <li>
+                                    <a href="#">Terms and Conditions</a>
+                                </li>
+                                <li>
+                                    <a href="#">Privacy Policy</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- cw-sidebar-menu  -->
+                    </div>
+                    <!-- cw-sidebar-content  -->
+                    <div class="cw-sidebar-footer">
+                        <div>
+                            <p class="is-size-7">Wallet balance:</p>
+                            <p class="has-text-weight-bold">$101</p>
+                        </div>
+                        <div class="has-text-right">
+                            <a href="#" class="button is-rounded cw-btn cw-btn-primary cw-btn-action is-size-7">Add
+                                Funds</a>
+                        </div>
+                    </div>
+                </nav>
+
+
+                <script>
+                    $('.cw-sidebar-dropdown > a').click(function () {
+                        $('.cw-sidebar-submenu').slideUp(175);
+                        if ($(this).parent().hasClass('active')) {
+                            $('.cw-sidebar-dropdown').removeClass('active');
+                            $(this).parent().removeClass('active');
+                        } else {
+                            $('.cw-sidebar-dropdown').removeClass('active');
+                            $(this).next('.cw-sidebar-submenu').slideDown(175);
+                            $(this).parent().addClass('active');
+                        }
+                    });
+                </script>
+            </div>
+            <div class="column is-10-desktop cw-main-content">
+
+                <div class="width-80 cw-mar-r-20">
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th colspan="3" class="th-special has-text-centered">
+                                        Referral Bonus (ETH and BTC)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Investment (USD)</th>
+                                    <th>Level 1</th>
+                                    <th>Level 2</th>
+                                    <th>Level 3</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>500 - 2499</td>
+                                    <td>5% </td>
+                                    <td>3%</td>
+                                    <td>2%</td>
+                                </tr>
+                                <tr>
+                                    <td>2500 - 9999</td>
+                                    <td>7%</td>
+                                    <td>3%</td>
+                                    <td>2%</td>
+                                </tr>
+                                <tr>
+                                    <td>10000 - 24999</td>
+                                    <td>9%</td>
+                                    <td>3%</td>
+                                    <td>2%</td>
+                                </tr>
+                                <tr>
+                                    <td>25000 - 50000</td>
+                                    <td>12%</td>
+                                    <td>3%</td>
+                                    <td>2%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
-</div>
-<script src="./js/script.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>
