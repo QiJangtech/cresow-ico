@@ -57,6 +57,7 @@ $.ajax({
     }
 })
 
+
 $.ajax({
     type: 'GET',
     url: 'http://18.136.101.29/api/registered_users',
@@ -147,6 +148,18 @@ $("#ethAmount").keyup(function () {
     localStorage.setItem("crx", convertedAmt);
     localStorage.setItem("usd", ethVal);
     localStorage.setItem("eth_address", ethAddress);
+
+    $.ajax({
+        type: 'GET',
+        url: "https://u03g7xi1gh.execute-api.us-east-1.amazonaws.com/dev/crypto/ETH",
+        success: function (res) {
+            var convertedETH = ethVal / res.message;
+            document.getElementById("eth_pay_amount").innerHTML = 'Pay exact amount of : ' + convertedETH + ' to this Public Key';
+        },
+        error: function (res) {
+            console.log(res);
+        }
+    })
 
     $("#ethAmountHelp").html(ethVal + ' USD = ' + convertedAmt + ' CRX');
 });
