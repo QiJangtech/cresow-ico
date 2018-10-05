@@ -71,16 +71,36 @@ $.ajax({
 })
 
 function detailReferralByID(data_id) {
+
+
     $.ajax({
         type: 'GET',
-        url: 'http://18.136.101.29/api/referral_records/' + data_id,
+        url: 'http://18.136.101.29/api/referral_records?user_id=' + data_id,
         headers: {
             "Authorization": 'Bearer ' + getUrlParam('token')
         },
         success: function (res) {
             console.log(res);
-            document.getElementById("referral_bonus").innerHTML = res.result.bonus;
-            document.getElementById("user_crx").innerHTML = res.result.amount_eth;
+            if(res.result.bonus != undefined){
+                document.getElementById("referral_bonus").innerHTML = res.result.bonus;
+            }
+            else{
+                document.getElementById("referral_bonus").innerHTML = "0";
+            }
+
+            if(res.result.amount_usd != undefined){
+                document.getElementById("user_crx").innerHTML = res.result.amount_usd / 0.03;
+            }
+            else{
+                document.getElementById("user_crx").innerHTML = "0";
+            }
+
+            if(res.result.amount_eth != undefined){
+                document.getElementById("eth_value").innerHTML = res.result.amount_eth;
+            }
+            else{
+                document.getElementById("eth_value").innerHTML = "0";
+            }
         },
         error: function (res) {
             console.log(res);
