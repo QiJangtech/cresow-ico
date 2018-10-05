@@ -70,6 +70,7 @@ $.ajax({
     }
 })
 
+
 function detailReferralByID(data_id) {
 
 
@@ -81,25 +82,26 @@ function detailReferralByID(data_id) {
         },
         success: function (res) {
             console.log(res);
-            if(res.result.bonus != undefined){
-                document.getElementById("referral_bonus").innerHTML = res.result.bonus;
-            }
-            else{
-                document.getElementById("referral_bonus").innerHTML = "0";
-            }
 
-            if(res.result.amount_usd != undefined){
-                document.getElementById("user_crx").innerHTML = res.result.amount_usd / 0.03;
+            var total_usd = 0;
+            var total_eth = 0;
+            var total_bonus = 0;
+
+            if (res.result) {
+                for (var i = 0; i < res.result.length; i++) {
+                    total_usd += parseFloat(res.result[i].amount_usd);
+                    // total_usd += parseInt(res.result[i].amount_usd);
+                    total_eth += parseFloat(res.result[i].amount_eth);
+                    total_bonus += parseFloat(res.result[i].bonus);
+                }
+                document.getElementById("user_crx").innerHTML = total_usd / 0.03;
+                document.getElementById("eth_value").innerHTML = total_eth;
+                document.getElementById("referral_bonus").innerHTML = total_bonus;
             }
-            else{
+            else {
                 document.getElementById("user_crx").innerHTML = "0";
-            }
-
-            if(res.result.amount_eth != undefined){
-                document.getElementById("eth_value").innerHTML = res.result.amount_eth;
-            }
-            else{
                 document.getElementById("eth_value").innerHTML = "0";
+                document.getElementById("referral_bonus").innerHTML = "0";
             }
         },
         error: function (res) {
@@ -237,13 +239,13 @@ var x = setInterval(function () {
 
 }, 1000);
 
-function header_user(data){
+function header_user(data) {
     document.getElementById("referral_id_user").innerHTML = '(' + 'Ref_ID : ' + data.result.referral_id + ')';
     document.getElementById("dashboard_username").innerHTML = data.result.first_name + ' ' + data.result.last_name;
     // document.getElementById("referral_bonus").innerHTML = "BONUSGG";
     // document.getElementById("user_crx").innerHTML = "CRXGG";
 }
 
-function totalUsers(data){
+function totalUsers(data) {
     document.getElementById("total_users").innerHTML = data.result + ' ' + "users";
 }
